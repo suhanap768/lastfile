@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="message">Message:</label>
+        <input type="text" id="message" value="Please sign this message to verify your identity." readonly>
+        <button type="button" onclick="signMessage()">Sign Message</button>
+        <br>
+        <label for="signature">Signature:</label>
+        <input type="text" id="signature" required>
+        <button type="submit">Login</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

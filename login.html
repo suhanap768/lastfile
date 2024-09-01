@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login page</title>
+        <style>
+            .welcome {
+                color:white;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 50px;
+                font-weight: 40px;
+                font-style:Times New Roman ;
+                position: relative;
+                padding-right: 50px;
+                text-align: center;
+            }
+            input{
+            padding: 10px 30px;
+            /* outline: none; */
+            border-radius: 80px;
+            border: 2px solid rgb(0, 217, 255);
+            background-color: black;
+            }
+            fieldset{
+            border-radius: 10px;
+            border: 2px solid black;
+            padding: 20px;
+            margin-right: 30px;
+            }
+           form{
+           margin-left: 400px;
+           margin-right: 400px;
+           border: 2PX solid black;
+           padding: 40px 100px;
+           /* border-radius: 50px; */
+           width: 400px;
+           margin-top: 80px;
+           box-shadow: 0 0 15px rgb(0, 217, 255);
+           border-radius: 20px;
+        }
+        button{
+            padding: 20px;
+            border-radius: 20px;
+            padding: 10px 20px;
+            border:2px solid rgba(0, 128, 0, 0.753);
+            background-color: black;
+            color: white;
+        }
+        h5{
+            color: white;
+        }
+        input{
+            color: aliceblue;
+        }
+        h3{
+            color: aliceblue;
+        }
+        </style>
+    </head>
+    <body style="background-color: black;">
+        <form style="background-color: black;" >
+            <h2 class="welcome">Login</h2>
+            <h3 align="center">Please Enter your username and password</h3>
+            <div align="center">
+            <div>
+                <!-- <h4>Username:</h4> -->
+                <input type="text" placeholder="Enter Username" required>
+            </div><br></br>
+            <div>
+                <!-- <h4>Security pin:</h4> -->
+                <input type="password" placeholder="password" required>
+            </div>
+            <h4 style="color: white;">Forget password?</h4>
+             <button><a href="authentication.html">Submit</a></button> 
+          </div>
+        </form>
+    </body>
+</html>

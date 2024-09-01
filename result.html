@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Results</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: white;
+        }
+        th {
+            background-color: #333;
+        }
+        tr:hover {
+            background-color: #333;
+        }
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        a {
+            color: #00d9ff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            border-radius: 50%;
+            border: none;
+            height: 50px;
+            width: 50px;
+
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Voting Results</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Party Name</th>
+                <th>Number of Votes</th>
+            </tr>
+        </thead>    
+        <tbody>
+            <tr>
+                <td><img src="bjp logo.jpeg"> 
+                    <br><br>BJP</td>
+                <td id="bjpVotes">0</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td id="incVotes">0</td>
+            </tr>
+            <tr>
+                <td>AAP</td>
+                <td id="aapVotes">0</td>
+            </tr>
+            <tr>
+                <td>BSP</td>
+                <td id="bspVotes">0</td>
+            </tr>
+            <tr>
+                <td>AITC</td>
+                <td id="aitcVotes">0</td>
+            </tr>
+            <tr>
+                <td>CPI</td>
+                <td id="cpiVotes">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="voting.html">Back to Voting</a>
+
+    <script>
+        // Assume 'results' object is passed from previous page
+        const results = {
+            BJP: parseInt(localStorage.getItem('BJP')) || 0,
+            INC: parseInt(localStorage.getItem('INC')) || 0,
+            AAP: parseInt(localStorage.getItem('AAP')) || 0,
+            BSP: parseInt(localStorage.getItem('BSP')) || 0,
+            AITC: parseInt(localStorage.getItem('AITC')) || 0,
+            CPI: parseInt(localStorage.getItem('CPI')) || 0
+        };
+
+        // Populate the table with results
+        document.getElementById('bjpVotes').innerText = results.BJP;
+        document.getElementById('incVotes').innerText = results.INC;
+        document.getElementById('aapVotes').innerText = results.AAP;
+        document.getElementById('bspVotes').innerText = results.BSP;
+        document.getElementById('aitcVotes').innerText = results.AITC;
+        document.getElementById('cpiVotes').innerText = results.CPI;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Form</title>
+    <style>
+        select {
+            padding: 20px 80px;
+            background-color: black;
+            color: white;
+            border-radius: 50px;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+        button {
+            padding: 10px 40px;
+            border-radius: 50px;
+            color: black;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        form {
+            background-color: black;
+            width: 600px;
+            height: 400px;
+            padding: 20px;
+            border: 2px solid white;
+            box-shadow: 0 0 15px rgba(98, 90, 90, 0.623);
+            text-align: center;
+            margin: 150px auto;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgb(0, 217, 255);
+            animation: fadeIn 1s ease;
+        }
+        label {
+            color: white;
+        }
+        h2 {
+            font-size: 40px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            background-color: black;
+            color: green;
+        }
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: black;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        #popup button {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form align="center" id="votingForm">
+        <label><h2>Select The Party</h2></label><br><br>
+        <select id="partySelect">
+            <option value="select">Select</option>
+            <option value="BJP">BJP</option>
+            <option value="INC">INC</option>
+            <option value="AAP">AAP</option>
+            <option value="BSP">BSP</option>
+            <option value="AITC">AITC</option>
+            <option value="CPI">CPI</option>
+        </select><br><br><br><br>
+        <button type="button" onclick="vote()">Vote</button><br><br><br><br>
+        <a href="javascript:void(0);" onclick="showResults()"><a href="result.html">Show the result</a></a>
+    </form>
+
+    <div id="overlay"></div>
+
+    <div id="popup">
+        <h2>Thank You for Voting!</h2>
+        <p>Your vote for <span id="selectedParty"></span> has been recorded.</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        const results = {
+            BJP: 0,
+            INC: 0,
+            AAP: 0,
+            BSP: 0,
+            AITC: 0,
+            CPI: 0
+        };
+
+        function vote() {
+            const selectedParty = document.getElementById('partySelect').value;
+            results[selectedParty]++;
+            document.getElementById('selectedParty').innerText = selectedParty;
+
+            // Show popup
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+
+                function vote() {
+            const selectedParty = document.getElementById('partySelect').value;
+            let count = parseInt(localStorage.getItem(selectedParty)) || 0;
+            count++;
+            localStorage.setItem(selectedParty, count);
+            document.getElementById('selectedParty').innerText = selectedParty;
+
+            // Show popup
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function showResults() {
+            let resultMessage = "Voting Results:\n";
+            for (const [party, votes] of Object.entries(results)) {
+                resultMessage += `${party}: ${votes} votes\n`;
+            }
+            alert(resultMessage);
+        }
+    </script>
+</body>
+</html>

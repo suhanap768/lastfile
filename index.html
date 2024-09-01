@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script>
+        function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    function openNav() {
+      document.getElementById("mySidepanel").style.width = "250px";
+      document.getElementById("mySidepanel").style.height = "100%";
+    }
+    function closeNav() {
+      document.getElementById("mySidepanel").style.width = "0";
+    }
+    </script> 
+</head>
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+    .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color:black;
+    color:white;
+    padding: 10px 15px;
+    border: none;
+   }
+   .box{
+     display: flex;
+     padding: 9px;
+   }
+   .box2{
+    margin-left: 1100px;
+   }
+   /* h1{
+    color: white;
+    font-size: 70px;
+    margin-top: 5px;
+    text-shadow: 0 0 10px rgb(0, 217, 255);
+   } */
+   .sidepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 250px;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+
+  .containrer{
+color: black;
+}
+}
+
+.sidepanel a:hover {
+  color: black;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+.openbtn:hover {
+         .container{
+         color: black;
+         margin-bottom: 15px;
+}
+}
+#myInput {
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 80%;
+  font-size: 16px;
+  padding: 12px 20px 12px 250px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+ 
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; 
+  background-color: #f6f6f6;
+  padding: 20px;
+  padding-left: 250px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  width:80%
+}
+
+#myUL li a:hover:not(.header) {
+  background-color:black;
+}
+
+.img{
+  mix-blend-mode: multiply;
+			left: 0;
+      top: 0;
+     
+}
+h1{
+    background-color: black;
+    /* color:black; */
+    color: white;
+    margin: 0px;
+    padding: 20px;
+    font-size: 70px;
+    /* text-shadow: 0 0 12px rgb(0, 217, 255); */
+    margin-bottom: 5px;
+    border: 2px solid white;
+    border-radius: 50px;
+    font-weight: 400;
+    margin:10px 80px 10px 80px;
+    /* background-color: white; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .add{
+        /* border: 2px solid white; */
+        /* display:flex; */
+    }
+    .xyz{
+      margin-left: 500px;
+      border-radius: 50%;
+    }
+    h3{
+      font-size: 20px;
+      padding: 10px;
+      margin: 10px;
+      font-weight: 200;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+  </style>
+  <body style="background-color: black;">
+    <div class="box">
+        <div>
+            <img src="4th.jpg" width="100px" height="100px">
+        </div>
+        <div class="box2">
+            <button class="openbtn" onclick="openNav()">☰</button>
+        </div>
+    </div>
+    <h1 align="center">Decentralized Voting System</h1>
+    <div class="add">
+      <div>
+        <img class="xyz" src="logo1.png" height="200px" width="200px">
+      </div>
+      <div>
+        <h3 style="color: white;">A decentralized voting system, powered by blockchain technology, ensures secure, transparent, and tamper-proof elections. By recording votes on a public ledger, it guarantees that each vote is immutable and auditable, enhancing voter trust and election integrity. The system provides end-to-end encryption, maintaining voter anonymity while allowing for real-time results. It also promotes accessibility by enabling remote voting and reducing costs through the elimination of physical polling stations. This innovative approach represents a significant leap forward in creating trustworthy and efficient electoral processes.</h3>
+      </div>
+    </div>
+    <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div class="container">
+    </div>
+        <a href="login.html">Login</a>
+        <a href="register.html">Registration</a>
+</body>
+</html>

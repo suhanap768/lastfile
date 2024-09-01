@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <style>
+        /* Your existing styles */
+        @keyframes formFadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        form {
+            margin-left: 300px;
+            margin-right: 400px;
+            background-color: black;
+            padding: 50px 60px;
+            margin:100px 180px 100px 180px;
+            box-shadow: 0 0 15px rgb(0, 217, 255);
+            border-radius: 30px;
+            animation: formFadeIn 1s ease-in-out;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
+        }
+        input, textarea {
+            padding: 10px 50px 10px 50px;
+            border-radius: 20px;
+            outline: none;
+            text-decoration: none;
+            border: none;
+            background-color: black;
+            border: 2px solid rgba(0, 179, 255, 0.767);
+            margin-right: 10px;
+            color: white;
+            transition: transform 0.3s ease-in-out;
+        }
+        input:focus, textarea:focus {
+            transform: scale(1.05);
+            border-color: rgb(0, 217, 255);
+        }
+        fieldset {
+            border-radius: 50px;
+            padding: 10px 50px 10px 40px;
+            border: 2px solid rgba(0, 179, 255, 0.767);
+            margin-right: 450px;
+        }
+        h4, h3, h2, h1 {
+            color: white;
+            margin: 10px 0;
+        }
+        h1 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 10px 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            border: 2px solid rgba(192, 199, 202, 0.767);
+            border-radius: 0;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: rgba(0, 179, 255, 0.767);
+            transform: scale(1.1);
+        }
+        body {
+            background-color: black;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            animation: bgFadeIn 2s ease-in-out;
+        }
+        @keyframes bgFadeIn {
+            from { background-color: #000000; }
+            to { background-color: #000000; }
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm">
+        <h1 align="center">Registration</h1>
+        <div>
+            <h2>Personal Information</h2><br>
+            <legend><h3>Full name</h3></legend>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <legend><h3>Date of Birth</h3></legend>  
+            <input style="color: gray;"  type="date" id="date">
+            <legend><h3>Age</h3></legend>  
+            <input type="number" id="age" placeholder="Enter your age" required>
+            <legend><h3>Gender</h3></legend>
+            <fieldset>
+                <input type="radio" name="gender" value="Female"><b style="color: white;">Female</b>
+                <input type="radio" name="gender" value="male"><b style="color: white;">Male</b>
+            </fieldset>
+        </div>
+        <div>
+            <br><br>
+            <h2>Contact Information</h2><br>
+            <legend><h3>Email</h3></legend>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <legend><h4>Contact</h4></legend>
+            <input type="text" id="Username" placeholder="Enter your username" required>
+            <legend><h4>Voter Id</h4></legend>
+            <input type="text" id="Password">
+        </div><br>
+        <button align="center" type="submit" class="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();  
+
+            const age = parseInt(document.getElementById('age').value);
+
+            if (age >= 18) {
+               alert("You are Eligible for voting");
+               window.location.href = "login.html"; // Redirect to the authentication page
+            } else {
+                alert("You are not eligible for voting");
+            }
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Authentication</title>
+    <style>
+        body {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            border: 1.5px rgb(0, 217, 255);
+            border-radius: 30px;
+        }
+
+        #auth-container {
+            background-color: black;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgb(0, 217, 255);
+            border-color: aqua;
+            max-width: 400px;
+            width: 100%;
+            transform: scale(0);
+            animation: popIn 0.5s forwards ease-in-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards ease-in-out;
+            animation-delay: 0.5s;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-top: 8px;
+        }
+
+        h3 {
+            color: white;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards ease-in-out;
+            animation-delay: 1s;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:disabled {
+            background-color: black;
+            cursor: not-allowed;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #connect-wallet {
+            margin-bottom: 20px;
+            border: 2px solid rgb(52, 207, 234);
+        }
+
+        #wallet-address {
+            color: #555;
+            font-size: 14px;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards ease-in-out;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        section {
+            background-color: black;
+        }
+
+        button:hover {
+            background-color: #333;
+            padding: 20px 5px 20px 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 128, 0, 0.753);
+            background-color: black;
+            color: white;
+            animation: buttonHover 1s ease-in-out infinite alternate;
+
+        }
+
+        a {
+                color: white;
+                text-decoration: none;
+        }
+    </style>
+</head>
+<body style="background-color:black;">
+    <div id="auth-container">
+        <h2>Voter Authentication</h2>
+        <section id="wallet-login">
+            <h3>Login with Wallet</h3>
+            <button id="connect-wallet"><a href="voting.html">Connect Wallet</a></button>
+            <p id="wallet-address"></p>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const connectWalletButton = document.getElementById('connect-wallet');
+            const walletAddressDisplay = document.getElementById('wallet-address');
+
+            connectWalletButton.addEventListener('click', async () => {
+                if (window.ethereum) {
+                    try {
+                        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                        walletAddressDisplay.textContent = `Connected Wallet: ${accounts[0]}`;
+                        walletAddressDisplay.style.opacity = 1; 
+                    } catch (error) {
+                        console.error("User denied wallet access");
+                        alert("Wallet connection failed. Please try again.");
+                    }
+                } else {
+                    alert("Please install MetaMask!");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
